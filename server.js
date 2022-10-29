@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 
+// importing route
+const EmployeeRoute = require('./routes/employee')
+
 // connecting to mongoDB database
 mongoose.connect("mongodb://localhost:27017/testdb", {
   useNewUrlParser: true,
@@ -28,3 +31,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
+
+app.use('/api/employee', EmployeeRoute)
